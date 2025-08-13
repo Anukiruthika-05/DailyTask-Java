@@ -1,0 +1,154 @@
+package Dailytask;
+import java.util.*;
+public class Day_of_Birth {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner (System.in);
+		System.out.print("Enter your date of birth:");
+		String dob=sc.nextLine();
+		String[]parts=dob.split("-");
+		int day=Integer.parseInt(parts[0]);
+		int month=Integer.parseInt(parts[1]);
+		int year=Integer.parseInt(parts[2]);
+		int original=year;
+		int count_of_lpy=0;
+		//System.out.println(year);
+		
+		  if(year>2000) {
+			  count_of_lpy=0;
+		  }
+		  if(year>=1900&&year<2000) {
+			  count_of_lpy=1;
+		  }
+		//System.out.println(count_of_lpy);
+		
+		int month1=month;
+		switch (month1) {
+		case 1:{
+			month1=6;
+			break;
+		}
+		case 2:{
+			month1=2;
+			break;
+		}
+		case 3:{
+			month1=2;
+			break;
+		}
+		case 4:{
+			month1=5;
+			break;
+		}
+		case 5:{
+			month1=0;
+			break;
+		}
+		case 6:{
+			month1=3;
+			break;
+		}
+		case 7:{
+			month1=5;
+			break;
+		}
+		case 8:{
+			month1=1;
+			break;
+		}
+		case 9:{
+			month1=4;
+			break;
+		}
+		case 10:{
+			month1=6;
+			break;
+			
+		}
+		case 11:{
+			month1=2;
+			break;
+		}
+		case 12:{
+			month1=4;
+			break;		
+		}
+		}
+		year=year%100;
+		int year1=year+(year/4);
+		//System.out.println(year1);
+		int rem=day%7;
+		int total=(year1+month1+rem+count_of_lpy)%7;   
+	//	System.out.println("total is");
+	//	System.out.println(total);
+		System.out.println("your day of birth is...");
+		switch(total) {
+		case 0:{
+			System.out.println("Sunday");
+			break;
+		}
+		case 1:{
+			System.out.println("Monday");
+			break;
+		}
+		case 2:{
+			System.out.println("Thuesday");
+			break;
+		}
+		case 3 :{
+			System.out.println("Wednesday");
+			break;
+		}
+		case 4:{
+			System.out.println("Thursday");
+			break;
+		}
+		case 5:{
+			System.out.println("Friday");
+			break;
+		}
+		case 6:{
+			System.out.println("Saturday");
+			break;
+		}
+		}
+		System.out.println("if you want to know your current Age... kindly drop" +"\"yes\""+" to know your Age");
+		String prefer=sc.nextLine();
+		System.out.println("Still which year you want to found your Age");
+		String still_year=sc.nextLine();
+		String[] parts2=still_year.split("-");
+		int date2=Integer.parseInt(parts2[0]);
+		int month2=Integer.parseInt(parts2[1]);
+		int year2=Integer.parseInt(parts2[2]);
+		boolean found=false;
+		if(prefer.equals("yes")) {
+			found=true;
+			int count1=0;
+				for(int i=original+1;i<=year2;i++) {
+				       count1=count1+1;
+				 }
+				
+				       int months=month2-month;
+				       int days=date2-day;
+				       if (days<0) {
+				    	   months-=1;
+				    	   days+=30;
+				       }
+				       if(months<0) {
+				    	   count1-=1;
+				    	   months+=12;
+				       }
+				       int hours=days*24;
+				       int minutes=hours*60;
+			
+				       System.out.println("your age is"+" "+" "+count1+"years"+months+"months"+days+"days");
+				      System.out.println("Total Hours :"+hours);
+				      System.out.println("Total Minutes:"+minutes);
+
+				       
+		}
+		
+	}
+
+}
